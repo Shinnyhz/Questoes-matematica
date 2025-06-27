@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Simulado – Função Quadrática (50 Questões)</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f7;
+      color: #222;
+      padding: 30px;
+    }
+    h1 {
+      text-align: center;
+      color: #2a7ae2;
+      margin-bottom: 30px;
+    }
+    .question {
+      background: #fff;
+      border-left: 5px solid #2a7ae2;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .question h2 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+    button {
+      display: block;
+      margin: 6px 0;
+      padding: 10px 15px;
+      font-size: 14px;
+      background: #2a7ae2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: left;
+    }
+    button:hover {
+      background: #1b5ec9;
+    }
+    .result {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    .correct {
+      color: green;
+    }
+    .wrong {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Simulado: Função Quadrática (50 Questões)</h1>
+
+<div id="quiz"></div>
+
+<script>
+  const questions = [
+    {q: "1. Qual é a forma geral de uma função quadrática?", a: ["a) ax³ + bx + c", "b) ax² + bx + c", "c) ax + b", "d) ax² + c"], correct: 1},
+    {q: "2. Na função f(x) = 3x² + 2x - 5, o coeficiente 'a' é:", a: ["a) 2", "b) -5", "c) 3", "d) 0"], correct: 2},
+    {q: "3. Uma função não é quadrática quando:", a: ["a) a = 0", "b) a = 1", "c) a = 2", "d) b = 0"], correct: 0},
+    {q: "4. A função f(x) = x² possui concavidade:", a: ["a) Para baixo", "b) Lateral", "c) Para cima", "d) Inexistente"], correct: 2},
+    {q: "5. O gráfico de toda função quadrática é:", a: ["a) Uma reta", "b) Um círculo", "c) Uma parábola", "d) Um trapézio"], correct: 2},
+    {q: "6. Calcule as raízes de f(x) = x² - 5x + 6:", a: ["a) x = 2 e x = 3", "b) x = -2 e x = -3", "c) x = 1 e x = 5", "d) Não tem raízes reais"], correct: 0},
+    {q: "7. A função f(x) = x² - 4x + 4 tem:", a: ["a) 2 raízes reais distintas", "b) Nenhuma raiz", "c) Raiz dupla", "d) 2 raízes irracionais"], correct: 2},
+    {q: "8. Se Δ < 0, então:", a: ["a) A função tem uma raiz", "b) Tem duas raízes reais", "c) Não possui raízes reais", "d) Não possui vértice"], correct: 2},
+    {q: "9. O discriminante (Δ) da função f(x) = 2x² + 4x + 1 é:", a: ["a) 8", "b) 4", "c) 16", "d) 0"], correct: 0},
+    {q: "10. A equação 3x² + 2x + 7 = 0 tem:", a: ["a) Uma raiz", "b) Duas reais", "c) Nenhuma raiz real", "d) Raiz dupla"], correct: 2},
+    {q: "11. Qual é o valor de x_v na função f(x) = 2x² - 8x + 3?", a: ["a) 4", "b) -2", "c) 2", "d) 1"], correct: 2},
+    {q: "12. O vértice da função f(x) = -x² + 6x - 5 é:", a: ["a) (3, 4)", "b) (6, -5)", "c) (-3, 4)", "d) (3, -5)"], correct: 0},
+    {q: "13. Qual o valor de f(0) na função f(x) = 4x² + 2x + 1?", a: ["a) 2", "b) 1", "c) 0", "d) 4"], correct: 1},
+    {q: "14. Uma parábola de concavidade para cima tem 'a':", a: ["a) menor que zero", "b) igual a zero", "c) maior que zero", "d) positivo ou negativo"], correct: 2},
+    {q: "15. Se f(x) = -2x² + 8x - 6, o vértice está em:", a: ["a) (2, 2)", "b) (-2, -2)", "c) (4, 4)", "d) (3, 3)"], correct: 0},
+    {q: "16. Em f(x) = x² + 2x + 1, o número de raízes reais é:", a: ["a) Nenhuma", "b) Uma", "c) Duas", "d) Três"], correct: 1},
+    {q: "17. A parábola de f(x) = x² - 2x - 3 intercepta o eixo y em:", a: ["a) -2", "b) -3", "c) 0", "d) 1"], correct: 1},
+    {q: "18. Se Δ = 0, então a função tem:", a: ["a) Duas raízes reais", "b) Nenhuma raiz real", "c) Raiz dupla", "d) Duas raízes complexas"], correct: 2},
+    {q: "19. A equação x² + x + 1 = 0 tem:", a: ["a) Uma raiz", "b) Nenhuma raiz real", "c) Raiz dupla", "d) Duas reais"], correct: 1},
+    {q: "20. O gráfico de f(x) = 2x² + 3x - 5 cruza o eixo y no ponto:", a: ["a) (0, -5)", "b) (-3, 0)", "c) (0, 3)", "d) (2, 0)"], correct: 0},
+    {q: "21. Qual é o valor de f(0) na função f(x) = 4x² + 3x - 10?", a: ["a) -50", "b) -10", "c) -50", "d) -50"], correct: 1},
+    {q: "22. Qual é o valor de f(0) na função f(x) = 5x² - 2x - 7?", a: ["a) -42", "b) -42", "c) -7", "d) -42"], correct: 2},
+    {q: "23. Qual é o valor de f(0) na função f(x) = 4x² + 10x - 9?", a: ["a) -45", "b) -9", "c) -45", "d) -45"], correct: 1},
+    {q: "24. Qual é o valor de f(0) na função f(x) = 3x² - 2x - 9?", a: ["a) -9", "b) -6", "c) 0", "d) -12"], correct: 0},
+    {q: "25. Qual é o valor de f(0) na função f(x) = 5x² + 5x - 3?", a: ["a) 3", "b) -3", "c) 0", "d) 2"], correct: 1},
+    {q: "26. Qual é o valor de f(0) na função f(x) = 2x² - 6x + 4?", a: ["a) 4", "b) -6", "c) 0", "d) -2"], correct: 0},
+    {q: "27. Qual é o valor de f(0) na função f(x) = x² - 2x + 2?", a: ["a) 2", "b) 0", "c) -2", "d) 4"], correct: 0},
+    {q: "28. Qual é o valor de f(0) na função f(x) = 3x² + 3x - 1?", a: ["a) -1", "b) 3", "c) 0", "d) 1"], correct: 0},
+    {q: "29. Qual é o valor de f(0) na função f(x) = 2x² - 5x - 7?", a: ["a) -7", "b) 0", "c) -5", "d) 2"], correct: 0},
+    {q: "30. Qual é o valor de f(0) na função f(x) = 4x² + 2x + 6?", a: ["a) 12", "b) 2", "c) 6", "d) 4"], correct: 2},
+    {q: "31. Qual a concavidade da função f(x) = -2x² + 4x - 1?", a: ["a) Para cima", "b) Para baixo", "c) Não é quadrática", "d) Indefinida"], correct: 1},
+    {q: "32. Encontre o vértice da função f(x) = 2x² - 8x + 6.", a: ["a) (2, -2)", "b) (4, 6)", "c) (-2, 4)", "d) (2, 2)"], correct: 0},
+    {q: "33. Quantas raízes reais tem a função f(x) = x² + 4x + 5?", a: ["a) Duas raízes reais", "b) Uma raiz real", "c) Nenhuma raiz real", "d) Infinitas raízes"], correct: 2},
+    {q: "34. Qual o valor de f(0) na função f(x) = 3x² - 2x + 7?", a: ["a) 5", "b) 7", "c) 0", "d) -2"], correct: 1},
+    {q: "35. A função f(x) = x² - 6x + 9 toca o eixo x em:", a: ["a) Nenhum ponto", "b) Dois pontos", "c) Um ponto", "d) Três pontos"], correct: 2},
+    {q: "36. A fórmula de Bhaskara é:", a: ["a) x = (-b ± √(b² - 4ac)) / 2a", "b) x = (-b ± √(4ac - b²)) / 2a", "c) x = (b ± √(b² + 4ac)) / 2a", "d) x = (-b ± √(b² + 4ac)) / a"], correct: 0},
+    {q: "37. O eixo de simetria da parábola f(x) = ax² + bx + c é dado por:", a: ["a) x = -b / 2a", "b) y = -b / 2a", "c) x = 2a / b", "d) y = 2a / b"], correct: 0},
+    {q: "38. O que indica Δ > 0 na função quadrática?", a: ["a) Nenhuma raiz real", "b) Uma raiz real", "c) Duas raízes reais distintas", "d) Raiz dupla"], correct: 2},
+    {q: "39. O que indica Δ = 0 na função quadrática?", a: ["a) Nenhuma raiz real", "b) Uma raiz real (raiz dupla)", "c) Duas raízes reais", "d) Raiz complexa"], correct: 1},
+    {q: "40. O que indica Δ < 0 na função quadrática?", a: ["a) Nenhuma raiz real", "b) Uma raiz real", "c) Duas raízes reais", "d) Raiz dupla"], correct: 0},
+    {q: "41. O valor do coeficiente c na função f(x) = ax² + bx + c representa:", a: ["a) O valor da raiz", "b) A ordenada do vértice", "c) O ponto onde a parábola corta o eixo y", "d) O valor da concavidade"], correct: 2},
+    {q: "42. Para a função f(x) = -x² + 4x - 3, a concavidade é:", a: ["a) Para cima", "b) Para baixo", "c) Neutra", "d) Indefinida"], correct: 1},
+    {q: "43. A parábola abre para cima quando:", a: ["a) a > 0", "b) a < 0", "c) b > 0", "d) c > 0"], correct: 0},
+    {q: "44. O ponto (2, 5) é vértice de uma parábola que abre para cima. Isso significa:", a: ["a) É ponto máximo", "b) É ponto mínimo", "c) É ponto de inflexão", "d) É ponto médio"], correct: 1},
+    {q: "45. A função f(x) = x² - 2x + 1 pode ser reescrita como:", a: ["a) (x + 1)²", "b) (x - 1)²", "c) (x - 2)²", "d) (x + 2)²"], correct: 1},
+    {q: "46. A equação x² - 4x + 4 = 0 tem:", a: ["a) Uma raiz real", "b) Duas raízes reais iguais", "c) Duas raízes reais distintas", "d) Nenhuma raiz real"], correct: 1},
+    {q: "47. O gráfico de uma função quadrática sempre é:", a: ["a) Linear", "b) Parabólico", "c) Circular", "d) Exponencial"], correct: 1},
+    {q: "48. A concavidade da parábola da função f(x) = -3x² + 6x - 1 é:", a: ["a) Para cima", "b) Para baixo", "c) Neutra", "d) Não tem"], correct: 1},
+    {q: "49. O que representa o coeficiente b na função f(x) = ax² + bx + c?", a: ["a) Inclinação inicial da parábola", "b) Ponto de interseção com o eixo y", "c) Determina a concavidade", "d) Termo constante"], correct: 0},
+    {q: "50. Qual é o valor do discriminante da função f(x) = x² + 6x + 9?", a: ["a) 0", "b) 36", "c) 9", "d) -36"], correct: 0}
+  ];
+
+  function renderQuiz() {
+    const container = document.getElementById("quiz");
+    questions.forEach((item, index) => {
+      const div = document.createElement("div");
+      div.className = "question";
+      div.innerHTML = `<h2>${item.q}</h2>` +
+        item.a.map((alt, i) =>
+          `<button onclick="check(${index}, ${i})">${alt}</button>`
+        ).join("") +
+        `<div id="res${index}" class="result"></div>`;
+      container.appendChild(div);
+    });
+  }
+
+  function check(qIndex, selected) {
+    const result = document.getElementById("res" + qIndex);
+    const correct = questions[qIndex].correct;
+    if (selected === correct) {
+      result.innerHTML = "✅ Correto!";
+      result.className = "result correct";
+    } else {
+      result.innerHTML = `❌ Errado! Resposta correta: ${questions[qIndex].a[correct]}`;
+      result.className = "result wrong";
+    }
+  }
+
+  renderQuiz();
+</script>
+
+</body>
+</html>
